@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/303building.obj-e7a81e8c5204890c9fdea5a337eb0416.mesh"
+
+[deps]
+
+files=[ "res://.import/303building.obj-e7a81e8c5204890c9fdea5a337eb0416.mesh" ]
+
+source_file="res://Scenes/Other/303building.obj"
+dest_files=[ "res://.import/303building.obj-e7a81e8c5204890c9fdea5a337eb0416.mesh", "res://.import/303building.obj-e7a81e8c5204890c9fdea5a337eb0416.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
