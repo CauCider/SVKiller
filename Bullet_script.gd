@@ -1,7 +1,8 @@
 extends Spatial
 
 # The speed the bullet travels at
-var BULLET_SPEED = 70
+# 변수명이 대문자: 변수지만 상수처럼 취급하고 싶음
+var BULLET_SPEED = 70	# 총알의 속도
 # The damage the bullet does on whatever it hits
 var BULLET_DAMAGE = 15
 # NOTE: for both BULLET_SPEED and BULLET_DAMAGE, we are keeping their
@@ -10,13 +11,14 @@ var BULLET_DAMAGE = 15
 
 # The length of time this bullet last (in seconds) before we free it.
 # (because we do not want the bullet to travel forever, as it will consume resources)
-const KILL_TIMER = 4
-var timer = 0
+const KILL_TIMER = 4	# 총알이 영원히 날아가는 것을 방지하기 위해
+var timer = 0			# 총알이 살아있는 것을 추적하기 위한 float 변수
 
 # A boolean to store whether or not we have hit something.
 # This is so we cannot damage more than one object if we manage to hit more than one before
 # this bullet is set free / destroyed
-var hit_something = false
+# 무언가를 쳤는지 여부를 추적하기 위한 boolean 변수
+var hit_something = false	
 
 func _ready():
 	# We want to get the area and connect ourself to it's body_entered signal.

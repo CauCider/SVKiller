@@ -3,11 +3,11 @@ extends KinematicBody
 # Walking variables.
 # This manages how fast we are moving, fast we can walk,
 # how quickly we can get to top speed, how strong gravity is, and how high we jump.
-const GRAVITY = -24.8
-var vel = Vector3()
+const GRAVITY = -24.8	# 얼마나 강한 중력이 우리를 끌어내리는지 / 낮으면 부드러운 느낌
+var vel = Vector3()		# KinematicBody의 속도
 const MAX_SPEED = 20
-const JUMP_SPEED = 18
-const ACCEL= 4.5
+const JUMP_SPEED = 18	# 얼마나 높이 뛸 수 있는지 / 높으면 부드러운 느낌
+const ACCEL = 4.5		# 얼마나 빨리 가속하는지
 
 # A vector for storing the direction the player intends to move towards.
 var dir = Vector3()
@@ -17,26 +17,28 @@ var dir = Vector3()
 const MAX_SPRINT_SPEED = 30
 const SPRINT_ACCEL = 18
 # A boolean to track if we are spriting
-var is_sprinting = false
+var is_sprinting = false	# 현재 플레이어가 전력질주 중인지
 
 # How fast we slow down, and the steepest angle that counts as a floor (to the KinematicBody).
-const DEACCEL= 16
-const MAX_SLOPE_ANGLE = 40
+const DEACCEL= 16	# 얼마나 빨리 감속하는지
+const MAX_SLOPE_ANGLE = 40	# KinematicBody가 바닥으로 간주할 가장 가파른 각도
 
 # The camera and the rotation helper.
 # We need the camera to get its directional vectors.
-#We rotate ourselves on the Y-axis using the rotation_helper to avoid rotating on more than one axis at a time.
-var camera
-var rotation_helper
+# We rotate ourselves on the Y-axis using the rotation_helper to avoid rotating on more than one axis at a time.
+var camera	# 카메라 노드
+var rotation_helper	# x축(위아래)에서 회전하려는 모든 항목을 포함하는 공간 노드
 
 # The sensitivity of the mouse
 # (Higher values equals faster movements with the mouse. Lower values equals slower movements with the mouse)
 # (You may need to adjust depending on the sensitivity of your mouse)
+
+# 상수는 아니지만 상수처럼 활용할 거임
 var MOUSE_SENSITIVITY = 0.05
 # The value of the scroll wheel (relative to our current weapon)
 var mouse_scroll_value = 0
 # How much a single scroll action increases mouse_scroll_value
-const MOUSE_SENSITIVITY_SCROLL_WHEEL = 0.08
+const MOUSE_SENSITIVITY_SCROLL_WHEEL = 0.08	# 마우스가 얼마나 민감한지
 
 # The sensitivity of the joypad's joysticks.
 # (Higher values equals faster movements with the mouse. Lower values equals slower movements with the mouse)
@@ -47,6 +49,7 @@ var JOYPAD_SENSITIVITY = 2
 const JOYPAD_DEADZONE = 0.15
 
 # The animation manager that holds all of our animations and their transition states
+# 무기에 필요한 클래스 변수
 var animation_manager
 
 # Weapon variables.
@@ -117,13 +120,17 @@ func _ready():
 	
 	# Get the animation manager and pass in a funcref for 'fire bullet'.
 	# This allows 'fire_bullet' to be called from the guns fire animations.
+	
+	# 무기
 	animation_manager = $Rotation_Helper/Model/Animation_Player
 	animation_manager.callback_function = funcref(self, "fire_bullet")
 	
 	# We need to capture the mouse in order to use it for a FPS style camera control.
+	# 캡처 모드로 설정해야 마우스가 게임 창을 벗어나지 않는다.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	# Get all of the weapon nodes
+	# 무기
 	weapons["KNIFE"] = $Rotation_Helper/Gun_Fire_Points/Knife_Point
 	weapons["PISTOL"] = $Rotation_Helper/Gun_Fire_Points/Pistol_Point
 	weapons["RIFLE"] = $Rotation_Helper/Gun_Fire_Points/Rifle_Point
@@ -172,6 +179,8 @@ func _physics_process(delta):
 		# Process most of the input related code.
 		# This includes: Movement, jumping, flash light toggling, freeing/locking the cursor,
 		# 				 firing the weapons, throwing grenades, and reloading.
+		
+		# 플레이어 입력과 관련된 모든 코드를 저장하는 곳
 		process_input(delta)
 		
 		# Process view related input (Joypad)
@@ -179,11 +188,13 @@ func _physics_process(delta):
 		
 		# Process our movement using functions provided in KinematicBody.
 		# This will move us based on our previous state, and the input we just processed
+		# KinematicBody가 게임 세계를 이동할 수 있도록 필요한 모든 데이터를 보낼 것
 		process_movement(delta)
 	
 	# If we have grabbed a object, we do not want to be able to change weapons or reload
 	if grabbed_object == null:
 		# Process the weapon changing logic. 
+		# 무기
 		process_changing_weapons(delta)
 		
 		# Process the weapon reloading logic
@@ -202,11 +213,15 @@ func process_input(delta):
 	# Based on the action pressed, we move in a direction relative to the camera.
 	
 	# Reset dir, so our previous movement does not effect us
+	# 플레이어가 이동하려는 방향을 저장하는 데 사용
 	dir = Vector3()
+	
 	# Get the camera's global transform so we can use its directional vectors
-	var cam_xform = camera.get_global_transform()
+	# 카메라의 전역 변환(방향 벡터 사용을 위해)
+	var cam_xform = camera.get_global_transform()	
 	
 	# Create a vector for storing our keyboard/joypad input
+	# 2차원
 	var input_movement_vector = Vector2()
 	
 	# Add keyboard input
@@ -270,8 +285,11 @@ func process_input(delta):
 	# Jumping
 	# Check if we are on the floor. If we are and the "movement_jump" action has
 	# been pressed, then jump.
+	# 플레이어가 바닥에 있고
 	if is_on_floor():
+		# 점프 작업을 하려고 한다면
 		if Input.is_action_just_pressed("movement_jump"):
+			# 점프를 한다
 			vel.y = JUMP_SPEED
 	# ----------------------------------
 	
@@ -513,18 +531,24 @@ func process_movement(delta):
 	
 	# Assure our movement direction on the Y axis is zero, and then normalize it.
 	dir.y = 0
+	
+	# 1 반경 단위 원 안에 있도록 정규화
+	# 플레이어가 직선으로 움직이든 대각선으로 움직이든 상관없이 일정한 속도로 움직이는 곳을 만든다.
+	# 정규화하지 않으면 플레이어는 직선으로 갈 때보다 대각선으로 갈 때 더 빠르게 이동한다.
 	dir = dir.normalized()
 	
 	# Apply gravity
+	# 플레이어의 속도에 중력 추가
 	vel.y += delta*GRAVITY
 	
 	# Set our velocity to a new variable (hvel) and remove the Y velocity.
-	var hvel = vel
-	hvel.y = 0
+	# 3차원에서 y축은 JUMP
+	var hvel = vel	# 플레이어의 속도
+	hvel.y = 0	# y축에서의 움직임을 제거
 	
 	# Based on whether we are sprinting or not, set our max speed accordingly.
-	var target = dir
-	if is_sprinting:
+	var target = dir	# 플레이어의 방향 벡터
+	if is_sprinting:	# 플레이어가 dir에서 제공하는 방향으로 얼마나 멀리 이동할지
 		target *= MAX_SPRINT_SPEED
 	else:
 		target *= MAX_SPEED
@@ -532,7 +556,7 @@ func process_movement(delta):
 	
 	# If we have movement input, then accelerate.
 	# Otherwise we are not moving and need to start slowing down.
-	var accel
+	var accel	# 가속 변수
 	if dir.dot(hvel) > 0:
 		# We should accelerate faster if we are sprinting
 		if is_sprinting:
@@ -543,7 +567,7 @@ func process_movement(delta):
 		accel = DEACCEL
 	
 	# Interpolate our velocity (without gravity), and then move using move_and_slide
-	hvel = hvel.linear_interpolate(target, accel*delta)
+	hvel = hvel.linear_interpolate(target, accel*delta)	# 수평 속도 보간
 	vel.x = hvel.x
 	vel.z = hvel.z
 	vel = move_and_slide(vel,Vector3(0,1,0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))

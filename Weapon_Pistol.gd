@@ -5,7 +5,7 @@ extends Spatial
 var ammo_in_weapon = 10
 var spare_ammo = 20
 const AMMO_IN_MAG = 10
-# How much damage does this weapon do
+# 한 발의 총알이 입히는 피해량
 const DAMAGE = 15
 
 # Can this weapon reload?
@@ -15,12 +15,12 @@ const CAN_REFILL = true
 
 # The name of the reloading animation.
 const RELOADING_ANIM_NAME = "Pistol_reload"
-# The name of the idle animation.
+# 권총의 대기 애니메이션의 이름
 const IDLE_ANIM_NAME = "Pistol_idle"
-# The name of the firing animation
+# 권총의 발사 애니메이션의 이름
 const FIRE_ANIM_NAME = "Pistol_fire"
 
-# Is this weapon enabled?
+# 이 무기의 사용/활성화 여부를 확인하기 위한 변수
 var is_weapon_enabled = false
 
 # The bullet scene the pistol fires
