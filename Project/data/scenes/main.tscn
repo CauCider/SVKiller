@@ -1,0 +1,263 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://data/textures/grid.png" type="Texture" id=1]
+[ext_resource path="res://data/scenes/character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://data/scenes/debug.tscn" type="PackedScene" id=3]
+[ext_resource path="res://data/scenes/fade.tscn" type="PackedScene" id=4]
+[ext_resource path="res://data/scenes/barrel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://data/models/buildings/building_102/building_102.fbx" type="PackedScene" id=6]
+[ext_resource path="res://data/models/buildings/building_102/obj/building_102.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://data/models/buildings/building_101/building_101.fbx" type="PackedScene" id=8]
+[ext_resource path="res://data/models/buildings/building_106/building_106.fbx" type="PackedScene" id=9]
+[ext_resource path="res://data/models/buildings/building_103/building_103.fbx" type="PackedScene" id=10]
+[ext_resource path="res://data/models/grass/Grass.fbx" type="PackedScene" id=11]
+
+[sub_resource type="ProceduralSky" id=1]
+sun_latitude = 39.24
+sun_curve = 0.246229
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+fog_color = Color( 0.372549, 0.372549, 0.372549, 1 )
+fog_sun_color = Color( 1, 1, 1, 1 )
+tonemap_mode = 2
+ss_reflections_enabled = true
+ssao_enabled = true
+ssao_intensity = 6.0
+ssao_quality = 0
+dof_blur_far_distance = 5.0
+dof_blur_far_transition = 50.0
+dof_blur_far_quality = 2
+dof_blur_near_amount = 0.05
+dof_blur_near_quality = 2
+glow_enabled = true
+glow_blend_mode = 1
+glow_bicubic_upscale = true
+adjustment_enabled = true
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 1, 6, 20 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 1 )
+uv1_triplanar = true
+
+[sub_resource type="ConvexPolygonShape" id=5]
+points = PoolVector3Array( -0.5, 3, 10, 0.5, 3, -10, 0.5, 3, 10, -0.5, 3, -10, -0.5, -3, 10, 0.5, -3, -10, 0.5, -3, 10, -0.5, -3, -10, 0.5, 3, 10, -0.5, 3, -10, 0.5, 3, -10, -0.5, 3, 10, 0.5, -3, 10, -0.5, -3, -10, 0.5, -3, -10, -0.5, -3, 10, 0.5, 3, 10, -0.5, -3, 10, -0.5, 3, 10, 0.5, -3, 10, 0.5, 3, -10, -0.5, -3, -10, -0.5, 3, -10, 0.5, -3, -10 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_texture = ExtResource( 1 )
+uv1_triplanar = true
+
+[sub_resource type="CubeMesh" id=7]
+material = SubResource( 6 )
+size = Vector3( 500, 2, 500 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 250, 1, 250 )
+
+[node name="main" type="Node"]
+
+[node name="post_processing" type="Spatial" parent="."]
+
+[node name="sun" type="DirectionalLight" parent="post_processing"]
+transform = Transform( 0.707107, 0.612372, -0.353553, 0, 0.5, 0.866025, 0.707107, -0.612373, 0.353553, 0, 0, 0 )
+light_color = Color( 0.976471, 0.959804, 0.85098, 1 )
+shadow_enabled = true
+directional_shadow_blend_splits = true
+
+[node name="environment" type="WorldEnvironment" parent="post_processing"]
+environment = SubResource( 2 )
+
+[node name="character" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 1, 10 )
+
+[node name="debug" parent="." instance=ExtResource( 3 )]
+
+[node name="fade" parent="." instance=ExtResource( 4 )]
+
+[node name="scenario" type="Spatial" parent="."]
+
+[node name="wall" type="StaticBody" parent="scenario" groups=[
+"wallk",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4, 8 )
+
+[node name="mesh" type="MeshInstance" parent="scenario/wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="collision" type="CollisionShape" parent="scenario/wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="terrain" type="StaticBody" parent="scenario" groups=[
+"concrete",
+]]
+transform = Transform( 2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0 )
+
+[node name="mesh" type="MeshInstance" parent="scenario/terrain"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0358462, -0.01824, 0.0206671 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="collision" type="CollisionShape" parent="scenario/terrain"]
+shape = SubResource( 8 )
+
+[node name="props" type="Spatial" parent="scenario"]
+
+[node name="barrel_0" parent="scenario/props" instance=ExtResource( 5 )]
+transform = Transform( 0.727593, 0, -0.686009, 0, 1, 0, 0.686009, 0, 0.727593, -7.54773, 2.25286, 12.1553 )
+
+[node name="barrel_1" parent="scenario/props" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4004, 2.67564, 8.92728 )
+
+[node name="barrel_2" parent="scenario/props" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.23876, 2.67564, 8.92728 )
+
+[node name="barrel_3" parent="scenario/props" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.23876, 2.67564, 17.051 )
+
+[node name="barrel_4" parent="scenario/props" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2444, 2.67564, 13.7984 )
+
+[node name="building_101" parent="." instance=ExtResource( 8 )]
+transform = Transform( 4.99868, -0.114745, 0, 0.114745, 4.99868, 0, 0, 0, 5, -95.3814, 4.26093, 234.853 )
+
+[node name="building_103" parent="." instance=ExtResource( 10 )]
+transform = Transform( 4.95852, -0.113823, 0.632553, 0.114745, 4.99868, 0, -0.632387, 0.0145165, 4.95983, 71.2605, 0.979252, 202.797 )
+
+[node name="building_102" parent="." instance=ExtResource( 6 )]
+transform = Transform( 4.99868, -0.114745, 0, 0.114745, 4.99868, 0, 0, 0, 5, 0.0989189, 0.766548, -0.638069 )
+
+[node name="building_102" type="MeshInstance" parent="building_102"]
+transform = Transform( 1, -3.72529e-09, 0, 3.72529e-09, 1, 0, 0, 0, 1, 6.27154, 0.384724, -1.61577 )
+mesh = ExtResource( 7 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+material/13 = null
+material/14 = null
+material/15 = null
+material/16 = null
+material/17 = null
+material/18 = null
+material/19 = null
+material/20 = null
+material/21 = null
+material/22 = null
+material/23 = null
+material/24 = null
+material/25 = null
+material/26 = null
+material/27 = null
+material/28 = null
+material/29 = null
+material/30 = null
+material/31 = null
+material/32 = null
+material/33 = null
+material/34 = null
+material/35 = null
+material/36 = null
+material/37 = null
+material/38 = null
+material/39 = null
+material/40 = null
+material/41 = null
+material/42 = null
+material/43 = null
+material/44 = null
+material/45 = null
+material/46 = null
+material/47 = null
+material/48 = null
+material/49 = null
+material/50 = null
+material/51 = null
+material/52 = null
+material/53 = null
+material/54 = null
+material/55 = null
+material/56 = null
+material/57 = null
+material/58 = null
+material/59 = null
+material/60 = null
+material/61 = null
+material/62 = null
+material/63 = null
+material/64 = null
+material/65 = null
+material/66 = null
+material/67 = null
+material/68 = null
+material/69 = null
+material/70 = null
+material/71 = null
+material/72 = null
+material/73 = null
+material/74 = null
+material/75 = null
+material/76 = null
+material/77 = null
+material/78 = null
+material/79 = null
+material/80 = null
+material/81 = null
+material/82 = null
+material/83 = null
+material/84 = null
+material/85 = null
+material/86 = null
+material/87 = null
+material/88 = null
+material/89 = null
+material/90 = null
+material/91 = null
+material/92 = null
+material/93 = null
+material/94 = null
+material/95 = null
+material/96 = null
+material/97 = null
+material/98 = null
+material/99 = null
+material/100 = null
+material/101 = null
+material/102 = null
+material/103 = null
+material/104 = null
+material/105 = null
+material/106 = null
+material/107 = null
+material/108 = null
+material/109 = null
+material/110 = null
+material/111 = null
+material/112 = null
+material/113 = null
+material/114 = null
+material/115 = null
+material/116 = null
+material/117 = null
+material/118 = null
+material/119 = null
+
+[node name="building_106" parent="." instance=ExtResource( 9 )]
+transform = Transform( 5, 0, 0, 0, 4.99886, -0.106806, 0, 0.106806, 4.99886, 109.414, -0.821026, 171.733 )
+
+[node name="Grass" parent="." instance=ExtResource( 11 )]
+transform = Transform( 7, 0, 0, 0, 10, 0, 0, 0, 10, -125.032, 2.5, 27.676 )
