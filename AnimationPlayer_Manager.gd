@@ -7,7 +7,9 @@ extends AnimationPlayer
 # and their transitions.
 #
 # Structure -> Animation name :[Connecting Animation states]
+# 애니메이션의 상태를 유지하기 위한 사전
 var states = {
+	# 만약에 현재 Idle_unarmed stae라면 아래 4개의 데이터로만 transition이 가능하다.
 	"Idle_unarmed":["Knife_equip", "Pistol_equip", "Rifle_equip", "Idle_unarmed"],
 	
 	"Pistol_equip":["Pistol_idle"],
@@ -31,6 +33,7 @@ var states = {
 # How fast should each animation play?
 # Because some of the animation is too slow, we'll speed them up
 # to make everything look and feel smooth
+# 애니메이션을 재생하려는 모든 속도를 유지하기 위한 사전
 var animation_speeds = {
 	"Idle_unarmed":1,
 	
@@ -52,10 +55,11 @@ var animation_speeds = {
 	"Knife_unequip":1,
 }
 
-# The current animation state we are in (the name of the current animation)
+# 현재 애니메이션 상태의 이름을 담기 위한 변수
 var current_state = null
 
 # A variable to hold the funcref that will be called from the animations
+# 콜백 함수를 담기 위한 변수
 var callback_function = null
 
 
