@@ -1,12 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://data/scripts/effects/spark/spark.gd" type="Script" id=2]
-
-[sub_resource type="Curve" id=4]
-_data = [ Vector2( 0.0124224, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=1]
 lifetime_randomness = 0.3
@@ -20,7 +14,6 @@ radial_accel = 100.0
 radial_accel_random = 0.93
 angle = 720.0
 angle_random = 1.0
-scale_curve = SubResource( 5 )
 
 [sub_resource type="SpatialMaterial" id=2]
 params_blend_mode = 1
