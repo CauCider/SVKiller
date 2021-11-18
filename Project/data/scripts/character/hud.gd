@@ -17,15 +17,7 @@ func _weapon_hud() -> void:
 	var off = Vector2(180, 80);
 	weapon_hud.position = get_viewport().size - off;
 	
-	if(str(weapon.arsenal.values()[weapon.current].name) == "mk_23"):
-		weapon_hud.get_node("name").text = "KNIFE";
-	elif(str(weapon.arsenal.values()[weapon.current].name) == "glock_17"):
-		weapon_hud.get_node("name").text = "PISTOL";
-	elif(str(weapon.arsenal.values()[weapon.current].name) == "kriss"):
-		weapon_hud.get_node("name").text = "RIFLE";
-	else:
-		#print(str(weapon.arsenal.values()[weapon.current].name));
-		weapon_hud.get_node("name").text = str(weapon.arsenal.values()[weapon.current].name);
+	weapon_hud.get_node("name").text = str(weapon.arsenal.values()[weapon.current].name);
 	weapon_hud.get_node("bullets").text = str(weapon.arsenal.values()[weapon.current].bullets);
 	weapon_hud.get_node("ammo").text = str(weapon.arsenal.values()[weapon.current].ammo);
 	
