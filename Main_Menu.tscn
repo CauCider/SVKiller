@@ -81,7 +81,10 @@ ruins_level_scene = "res://assets/Ruin_Level_Objects/Ruins_Level.tscn"
 environment = SubResource( 2 )
 
 [node name="Main_Menu_Camera" type="Camera" parent="Background_Animation"]
+<<<<<<< Updated upstream:Main_Menu.tscn
 transform = Transform( 1, -1.74846e-07, 1.74846e-07, 1.74846e-07, 1, -1.74846e-07, -1.74846e-07, 1.74846e-07, 1, 0, 0, 0 )
+=======
+>>>>>>> Stashed changes:Project/data/scenes/Main_Menu.tscn
 
 [node name="Animation_Player" type="AnimationPlayer" parent="Background_Animation"]
 autoplay = "Background_Animation"

@@ -50,6 +50,7 @@ func start_menu_button_pressed(button_name):
 	if button_name == "start":
 		level_select_menu.visible = true
 		start_menu.visible = false
+		
 	elif button_name == "options":
 		options_menu.visible = true
 		start_menu.visible = false
