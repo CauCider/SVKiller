@@ -1,5 +1,7 @@
 extends Spatial
 
+export(NodePath) var weapon_hud;
+export(NodePath) var crosshair;
 # Get character's node path
 export(NodePath) var character;
 
@@ -38,6 +40,9 @@ func _ready() -> void:
 	
 	# Get head node from path
 	character = get_node(character);
+	
+	weapon_hud = get_node(weapon_hud);
+	crosshair = get_node(crosshair);
 	
 	# Class reference : 
 	# owner, name, firerate, bullets, ammo, max_bullets, damage, reload_speed;
@@ -112,3 +117,10 @@ func _unhandled_input(event):
 					current = 1;
 				if event.scancode == KEY_3:
 					current = 2;
+#					$"../../character/hud/weapon_hud/name".text = "zzzzzz";
+#				if event.scancode == KEY_4:
+#					$"../../character/hud/weapon_hud/name".text = "KNIFE";
+#				if event.scancode == KEY_5:
+#					current = 4;
+#				if event.scancode == KEY_6:
+#					current = 5;
