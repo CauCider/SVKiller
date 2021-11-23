@@ -13,13 +13,13 @@
 [ext_resource path="res://data/models/grass/Grass.fbx" type="PackedScene" id=11]
 [ext_resource path="res://data/models/test/test.obj" type="ArrayMesh" id=12]
 
-[sub_resource type="ProceduralSky" id=9]
+[sub_resource type="ProceduralSky" id=1]
 sun_latitude = 39.24
 sun_curve = 0.246229
 
-[sub_resource type="Environment" id=10]
+[sub_resource type="Environment" id=2]
 background_mode = 2
-background_sky = SubResource( 9 )
+background_sky = SubResource( 1 )
 fog_color = Color( 0.372549, 0.372549, 0.372549, 1 )
 fog_sun_color = Color( 1, 1, 1, 1 )
 tonemap_mode = 2
@@ -37,27 +37,27 @@ glow_blend_mode = 1
 glow_bicubic_upscale = true
 adjustment_enabled = true
 
-[sub_resource type="CylinderShape" id=14]
+[sub_resource type="CylinderShape" id=3]
 
-[sub_resource type="CubeMesh" id=11]
+[sub_resource type="CubeMesh" id=4]
 size = Vector3( 1, 6, 20 )
 
-[sub_resource type="SpatialMaterial" id=12]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 1 )
 uv1_triplanar = true
 
-[sub_resource type="ConvexPolygonShape" id=13]
+[sub_resource type="ConvexPolygonShape" id=6]
 points = PoolVector3Array( -0.5, 3, 10, 0.5, 3, -10, 0.5, 3, 10, -0.5, 3, -10, -0.5, -3, 10, 0.5, -3, -10, 0.5, -3, 10, -0.5, -3, -10, 0.5, 3, 10, -0.5, 3, -10, 0.5, 3, -10, -0.5, 3, 10, 0.5, -3, 10, -0.5, -3, -10, 0.5, -3, -10, -0.5, -3, 10, 0.5, 3, 10, -0.5, -3, 10, -0.5, 3, 10, 0.5, -3, 10, 0.5, 3, -10, -0.5, -3, -10, -0.5, 3, -10, 0.5, -3, -10 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=7]
 albedo_texture = ExtResource( 1 )
 uv1_triplanar = true
 
-[sub_resource type="CubeMesh" id=7]
-material = SubResource( 6 )
+[sub_resource type="CubeMesh" id=8]
+material = SubResource( 7 )
 size = Vector3( 500, 2, 500 )
 
-[sub_resource type="BoxShape" id=8]
+[sub_resource type="BoxShape" id=9]
 extents = Vector3( 250, 1, 250 )
 
 [node name="main" type="Node"]
@@ -71,7 +71,7 @@ shadow_enabled = true
 directional_shadow_blend_splits = true
 
 [node name="environment" type="WorldEnvironment" parent="post_processing"]
-environment = SubResource( 10 )
+environment = SubResource( 2 )
 
 [node name="character" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 1, 10 )
@@ -94,7 +94,7 @@ material/0 = null
 
 [node name="collision" type="CollisionShape" parent="scenario/test"]
 transform = Transform( 0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.05, -0.0187243, 0.61874, 0.173104 )
-shape = SubResource( 14 )
+shape = SubResource( 3 )
 
 [node name="wall" type="StaticBody" parent="scenario" groups=[
 "wallk",
@@ -104,12 +104,12 @@ visible = false
 
 [node name="mesh" type="MeshInstance" parent="scenario/wall"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
-mesh = SubResource( 11 )
-material/0 = SubResource( 12 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
 
 [node name="collision" type="CollisionShape" parent="scenario/wall"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
-shape = SubResource( 13 )
+shape = SubResource( 6 )
 
 [node name="terrain" type="StaticBody" parent="scenario" groups=[
 "concrete",
@@ -118,11 +118,11 @@ transform = Transform( 2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0 )
 
 [node name="mesh" type="MeshInstance" parent="scenario/terrain"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0358462, -0.01824, 0.0206671 )
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="collision" type="CollisionShape" parent="scenario/terrain"]
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="props" type="Spatial" parent="scenario"]
 
@@ -131,18 +131,6 @@ transform = Transform( 0.727593, 0, -0.686009, 0, 1, 0, 0.686009, 0, 0.727593, -
 
 [node name="barrel_1" parent="scenario/props" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4004, 2.67564, 8.92728 )
-
-[node name="barrel_2" parent="scenario/props" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.23876, 2.67564, 8.92728 )
-visible = false
-
-[node name="barrel_3" parent="scenario/props" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.23876, 2.67564, 17.051 )
-visible = false
-
-[node name="barrel_4" parent="scenario/props" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2444, 2.67564, 13.7984 )
-visible = false
 
 [node name="building_101" parent="." instance=ExtResource( 8 )]
 transform = Transform( 4.99868, -0.114745, 0, 0.114745, 4.99868, 0, 0, 0, 5, -95.3814, 4.26093, 234.853 )
