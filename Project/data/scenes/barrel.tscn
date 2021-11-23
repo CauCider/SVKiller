@@ -22,7 +22,7 @@ surfaces/0 = {
 }
 
 [sub_resource type="CylinderShape" id=2]
-radius = 0.713798
+radius = 0.71
 height = 2.28251
 
 [sub_resource type="Gradient" id=3]
@@ -151,6 +151,7 @@ material = SubResource( 18 )
 size = Vector2( 0.4, 0.4 )
 
 [sub_resource type="SphereShape" id=20]
+margin = 1.0
 radius = 6.0
 
 [node name="barrel" type="RigidBody" groups=[
