@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/GTP_BMan_Jack_07_Stg_Lsn_Adl_Ccs_Gry_Mgr.obj-158df5bca85096a279c3e57708f66012.mesh"
+
+[deps]
+
+files=[ "res://.import/GTP_BMan_Jack_07_Stg_Lsn_Adl_Ccs_Gry_Mgr.obj-158df5bca85096a279c3e57708f66012.mesh" ]
+
+source_file="res://data/models/person/GTP_BMan_Jack_07_Stg_Lsn_Adl_Ccs_Gry_Mgr.obj"
+dest_files=[ "res://.import/GTP_BMan_Jack_07_Stg_Lsn_Adl_Ccs_Gry_Mgr.obj-158df5bca85096a279c3e57708f66012.mesh", "res://.import/GTP_BMan_Jack_07_Stg_Lsn_Adl_Ccs_Gry_Mgr.obj-158df5bca85096a279c3e57708f66012.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

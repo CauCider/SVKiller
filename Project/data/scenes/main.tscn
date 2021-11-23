@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://data/textures/grid.png" type="Texture" id=1]
 [ext_resource path="res://data/scenes/character.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://data/models/buildings/building_103/building_103.fbx" type="PackedScene" id=10]
 [ext_resource path="res://data/models/grass/Grass.fbx" type="PackedScene" id=11]
 [ext_resource path="res://data/models/test/test.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://data/scenes/barrel2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://data/scenes/barrel3.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ProceduralSky" id=1]
 sun_latitude = 39.24
@@ -127,10 +129,21 @@ shape = SubResource( 9 )
 [node name="props" type="Spatial" parent="scenario"]
 
 [node name="barrel_0" parent="scenario/props" instance=ExtResource( 5 )]
-transform = Transform( 0.727593, 0, -0.686009, 0, 1, 0, 0.686009, 0, 0.727593, -7.54773, 2.25286, 12.1553 )
+transform = Transform( 0.727593, 0, -0.686009, 0, 1, 0, 0.686009, 0, 0.727593, -7.54773, 3.86093, 12.1553 )
 
 [node name="barrel_1" parent="scenario/props" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4004, 2.67564, 8.92728 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4004, 3.93336, 8.92728 )
+
+[node name="nomaskman1" parent="scenario/props" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.43291, 3.60165, 8.67639 )
+
+[node name="nomaskman2" parent="scenario/props" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2782, 3.60165, 182.228 )
+
+[node name="nomaskman3" parent="scenario/props" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.6291, 3.60165, 106.667 )
+
+[node name="barrel2" parent="scenario/props" instance=ExtResource( 14 )]
 
 [node name="building_101" parent="." instance=ExtResource( 8 )]
 transform = Transform( 4.99868, -0.114745, 0, 0.114745, 4.99868, 0, 0, 0, 5, -95.3814, 4.26093, 234.853 )
