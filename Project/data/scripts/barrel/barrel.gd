@@ -16,7 +16,7 @@ func _damage(damage) -> void:
 		
 		if dam_calc <= 0:
 			durability -= damage;
-			_explosion();
+			_kill();
 			$explosion/timer.start();
 			$timer.start();
 		else:
@@ -24,6 +24,11 @@ func _damage(damage) -> void:
 
 func _process(_delta) -> void:
 	_remove_decal();
+	
+func _kill() -> void:
+	$collision.disabled = true;	
+	$mesh.visible = false;
+
 
 func _explosion() -> void:
 	$collision.disabled = true;
