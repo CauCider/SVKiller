@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/MAN+MASKS.obj-7a690a02f63c25646a6e76b63921e616.mesh"
+
+[deps]
+
+files=[ "res://.import/MAN+MASKS.obj-7a690a02f63c25646a6e76b63921e616.mesh" ]
+
+source_file="res://data/models/person/MAN+MASKS.obj"
+dest_files=[ "res://.import/MAN+MASKS.obj-7a690a02f63c25646a6e76b63921e616.mesh", "res://.import/MAN+MASKS.obj-7a690a02f63c25646a6e76b63921e616.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
