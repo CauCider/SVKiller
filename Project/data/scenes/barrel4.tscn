@@ -1,0 +1,315 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://data/audios/barrel/impact.ogg" type="AudioStream" id=1]
+[ext_resource path="res://data/scripts/barrel/barrel.gd" type="Script" id=2]
+[ext_resource path="res://data/audios/barrel/explosion.ogg" type="AudioStream" id=3]
+[ext_resource path="res://data/textures/explosion.png" type="Texture" id=4]
+[ext_resource path="res://data/models/person/_0096_SkyBlue_1.material" type="Material" id=5]
+[ext_resource path="res://data/models/person/maskman.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://data/models/person/_0137_Black_4.material" type="Material" id=7]
+[ext_resource path="res://data/models/person/_23.material" type="Material" id=8]
+[ext_resource path="res://data/models/person/_GhostWhite_.material" type="Material" id=9]
+[ext_resource path="res://data/models/person/_Charcoal_.material" type="Material" id=10]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.71
+height = 2.28251
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.503704, 1 )
+colors = PoolColorArray( 0.454902, 0.392157, 0.392157, 0, 0, 0, 0, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="Curve" id=6]
+max_value = 10.0
+bake_resolution = 500
+_data = [ Vector2( 0, 9.47727 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 5, 0 )
+linear_accel = 3.0
+linear_accel_random = 0.2
+linear_accel_curve = SubResource( 5 )
+scale = 0.1
+scale_random = 1.0
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=9]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_cull_mode = 2
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.266667, 0.266667, 0.266667, 0.588235 )
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="QuadMesh" id=10]
+material = SubResource( 9 )
+size = Vector2( 0.5, 0.5 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 5.0
+linear_accel = 3.0
+linear_accel_random = 0.2
+linear_accel_curve = SubResource( 5 )
+scale = 0.1
+scale_random = 1.0
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=12]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_cull_mode = 2
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.266667, 0.266667, 0.266667, 0.588235 )
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="QuadMesh" id=13]
+material = SubResource( 12 )
+
+[sub_resource type="Gradient" id=14]
+colors = PoolColorArray( 0, 0, 0, 1, 0.501961, 0.501961, 0.501961, 0 )
+
+[sub_resource type="GradientTexture" id=15]
+gradient = SubResource( 14 )
+
+[sub_resource type="ParticlesMaterial" id=16]
+render_priority = 1
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 2.0
+angle = -720.0
+angle_random = 1.0
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 15 )
+
+[sub_resource type="SpatialMaterial" id=17]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 1, 1, 1, 0.588235 )
+albedo_texture = ExtResource( 4 )
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color( 1, 0.333333, 0, 1 )
+emission_energy = 10.0
+emission_operator = 1
+emission_on_uv2 = false
+emission_texture = ExtResource( 4 )
+
+[sub_resource type="QuadMesh" id=18]
+material = SubResource( 17 )
+size = Vector2( 0.4, 0.4 )
+
+[sub_resource type="SphereShape" id=19]
+margin = 1.0
+radius = 6.0
+
+[node name="barrel4" type="RigidBody" groups=[
+"metal",
+"prop",
+]]
+mass = 6.0
+script = ExtResource( 2 )
+
+[node name="mesh" type="Spatial" parent="."]
+transform = Transform( 0.035, 0, 0, 0, 0.035, 0, 0, 0, 0.035, 0, 0, 0 )
+
+[node name="Mesh" type="MeshInstance" parent="mesh"]
+transform = Transform( 60, 0, 0, 0, 60, 0, 0, 0, 60, -99.4576, -32.7764, 52.5978 )
+mesh = ExtResource( 6 )
+material/0 = ExtResource( 9 )
+material/1 = ExtResource( 7 )
+material/2 = ExtResource( 5 )
+material/3 = ExtResource( 7 )
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+material/13 = null
+material/14 = ExtResource( 7 )
+material/15 = ExtResource( 8 )
+material/16 = null
+material/17 = null
+material/18 = null
+material/19 = null
+material/20 = null
+material/21 = null
+material/22 = null
+material/23 = null
+material/24 = null
+material/25 = null
+material/26 = null
+material/27 = null
+material/28 = null
+material/29 = ExtResource( 10 )
+material/30 = null
+material/31 = null
+material/32 = null
+material/33 = null
+material/34 = null
+material/35 = null
+material/36 = null
+material/37 = null
+material/38 = null
+material/39 = null
+material/40 = null
+material/41 = null
+material/42 = null
+material/43 = null
+material/44 = null
+material/45 = null
+material/46 = null
+material/47 = null
+material/48 = null
+material/49 = null
+material/50 = null
+material/51 = null
+material/52 = null
+material/53 = null
+material/54 = null
+material/55 = null
+material/56 = null
+material/57 = null
+material/58 = null
+material/59 = null
+material/60 = null
+material/61 = null
+material/62 = null
+material/63 = null
+material/64 = null
+material/65 = null
+material/66 = null
+material/67 = null
+material/68 = null
+material/69 = null
+material/70 = null
+material/71 = null
+material/72 = null
+material/73 = null
+material/74 = null
+material/75 = null
+material/76 = null
+material/77 = null
+material/78 = null
+material/79 = null
+material/80 = null
+material/81 = null
+material/82 = null
+material/83 = null
+material/84 = null
+material/85 = null
+material/86 = null
+material/87 = null
+material/88 = null
+material/89 = null
+material/90 = null
+material/91 = null
+material/92 = null
+material/93 = null
+material/94 = null
+material/95 = null
+material/96 = null
+material/97 = null
+
+[node name="collision" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="effects" type="Spatial" parent="."]
+
+[node name="ex" type="Particles" parent="effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+process_material = SubResource( 8 )
+draw_pass_1 = SubResource( 10 )
+
+[node name="plo" type="Particles" parent="effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 11 )
+draw_pass_1 = SubResource( 13 )
+
+[node name="sion" type="Particles" parent="effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+lifetime = 1.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 16 )
+draw_pass_1 = SubResource( 18 )
+
+[node name="audios" type="Spatial" parent="."]
+
+[node name="explosion" type="AudioStreamPlayer3D" parent="audios"]
+stream = ExtResource( 3 )
+unit_db = 80.0
+
+[node name="impact" type="AudioStreamPlayer3D" parent="audios"]
+stream = ExtResource( 1 )
+unit_db = 80.0
+
+[node name="explosion" type="Area" parent="."]
+
+[node name="timer" type="Timer" parent="explosion"]
+wait_time = 0.2
+one_shot = true
+
+[node name="collision" type="CollisionShape" parent="explosion"]
+shape = SubResource( 19 )

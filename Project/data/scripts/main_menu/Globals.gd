@@ -130,6 +130,15 @@ func enemy_killed():
 		gameover = GAMEOVER_SCENE.instance()
 		add_child(gameover)
 		get_tree().paused = true	
+		
+func good_killed():
+	score -= 10
+	print(score)
+	if(score<0):
+		print("finish")
+		gameover = GAMEOVER_SCENE.instance()
+		add_child(gameover)
+		get_tree().paused = true	
 	
 func popup_closed():
 	# Unpause the game

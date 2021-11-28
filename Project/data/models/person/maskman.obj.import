@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/maskman.obj-ba0a80204a1e07853737eed30190df5b.mesh"
+
+[deps]
+
+files=[ "res://.import/maskman.obj-ba0a80204a1e07853737eed30190df5b.mesh" ]
+
+source_file="res://data/models/person/maskman.obj"
+dest_files=[ "res://.import/maskman.obj-ba0a80204a1e07853737eed30190df5b.mesh", "res://.import/maskman.obj-ba0a80204a1e07853737eed30190df5b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
