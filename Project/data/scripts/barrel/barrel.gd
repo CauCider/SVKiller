@@ -1,4 +1,25 @@
 extends RigidBody
+#extends KinematicBody
+
+export var speed = 1
+export var fall_acceleration = 75
+
+var velocity = Vector3.ZERO
+
+var linearVelocityModule = 5
+var anglePlayerRot = get_node(".").get("rotation_degrees") # get_rot() not working!
+var localLinearVelocityX = linearVelocityModule * cos(anglePlayerRot.x) #Can't convert Vector3 to Float!!
+var localLinearVelocityY = linearVelocityModule * sin(anglePlayerRot.y)
+
+# Trying this for 3D
+var localLinearVelocityZ = linearVelocityModule * tan(anglePlayerRot.z)
+var localLinearVelocity = Vector3(localLinearVelocityX, localLinearVelocityY, localLinearVelocityZ) 
+#var localLinearVelocity = Vector2(localLinearVelocityX, anglePlayerRot.y) 
+
+var motion = Vector2()
+var state = 1
+#0 for nothing, 1 = right, 2=left, 3=jump
+
 
 export var durability : int = 100;
 var remove_decal : bool = false;
@@ -25,6 +46,19 @@ func _damage(damage) -> void:
 
 func _process(_delta) -> void:
 	_remove_decal();
+	#state = floor(rand_range(0,2))
+	print(state)
+	print("hi")
+	state = 1
+	
+	if state == 0:
+		pass
+	elif state ==1:
+		motion.x += 5
+		set_linear_velocity(Vector3(-3, 0, 0))
+		#set_linear_velocity(Vector3(localLinearVelocity.x - speed, get_linear_velocity().y, get_linear_velocity().z))
+	elif state ==2 :
+		motion.y += 5
 	
 func _kill() -> void:
 	$collision.disabled = true;	
@@ -40,7 +74,7 @@ func _explosion() -> void:
 	main.add_child(burnt_ground);
 	burnt_ground.translation = global_transform.origin;
 	
-	mode = MODE_STATIC;
+	#mode = MODE_STATIC;
 	
 	$mesh.visible = false;
 	$effects/ex.emitting = true;

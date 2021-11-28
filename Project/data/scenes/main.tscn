@@ -16,6 +16,7 @@
 [ext_resource path="res://data/scenes/barrel3.tscn" type="PackedScene" id=14]
 [ext_resource path="res://data/fonts/Titillium-Regular.otf" type="DynamicFontData" id=15]
 [ext_resource path="res://data/scenes/Score.gd" type="Script" id=16]
+[ext_resource path="res://data/models/blockfloor/blinn1.material" type="Material" id=17]
 
 [sub_resource type="ProceduralSky" id=1]
 sun_latitude = 39.24
@@ -45,10 +46,6 @@ adjustment_enabled = true
 
 [sub_resource type="CubeMesh" id=4]
 size = Vector3( 1, 6, 20 )
-
-[sub_resource type="SpatialMaterial" id=5]
-albedo_texture = ExtResource( 1 )
-uv1_triplanar = true
 
 [sub_resource type="ConvexPolygonShape" id=6]
 points = PoolVector3Array( -0.5, 3, 10, 0.5, 3, -10, 0.5, 3, 10, -0.5, 3, -10, -0.5, -3, 10, 0.5, -3, -10, 0.5, -3, 10, -0.5, -3, -10, 0.5, 3, 10, -0.5, 3, -10, 0.5, 3, -10, -0.5, 3, 10, 0.5, -3, 10, -0.5, -3, -10, 0.5, -3, -10, -0.5, -3, 10, 0.5, 3, 10, -0.5, -3, 10, -0.5, 3, 10, 0.5, -3, 10, 0.5, 3, -10, -0.5, -3, -10, -0.5, 3, -10, 0.5, -3, -10 )
@@ -111,12 +108,11 @@ shape = SubResource( 3 )
 "wallk",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4, 8 )
-visible = false
 
 [node name="mesh" type="MeshInstance" parent="scenario/wall"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
 mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+material/0 = ExtResource( 17 )
 
 [node name="collision" type="CollisionShape" parent="scenario/wall"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
@@ -139,9 +135,10 @@ shape = SubResource( 9 )
 
 [node name="barrel_0" parent="scenario/props" instance=ExtResource( 5 )]
 transform = Transform( 0.727593, 0, -0.686009, 0, 1, 0, 0.686009, 0, 0.727593, -7.54773, 3.86093, 12.1553 )
+mode = 3
 
 [node name="barrel_1" parent="scenario/props" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4004, 3.93336, 8.92728 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19471, 3.93336, 8.92728 )
 
 [node name="nomaskman1" parent="scenario/props" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.43291, 3.60165, 8.67639 )
