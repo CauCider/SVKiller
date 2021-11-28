@@ -20,7 +20,7 @@ func _weapon_hud() -> void:
 	weapon_hud.get_node("name").text = str(weapon.arsenal.values()[weapon.current].name);
 	weapon_hud.get_node("bullets").text = str(weapon.arsenal.values()[weapon.current].bullets);
 	weapon_hud.get_node("ammo").text = str(weapon.arsenal.values()[weapon.current].ammo);
-	
+
 	# Color
 	if weapon.arsenal.values()[weapon.current].bullets < (weapon.arsenal.values()[weapon.current].max_bullets/4):
 		weapon_hud.get_node("bullets").add_color_override("font_color", Color("#ff0000"));

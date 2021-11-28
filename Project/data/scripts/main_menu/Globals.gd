@@ -3,6 +3,11 @@ extends Node
 # The path to the title screen scene
 const MAIN_MENU_PATH = "res://data/scenes/Main_Menu.tscn"
 
+var player 
+var score = 0
+
+
+
 
 # ------------------------------------
 # All of the GUI/UI related variables
@@ -113,7 +118,10 @@ func _process(delta):
 			# Pause the game
 			get_tree().paused = true
 
-
+func enemy_killed():
+	score += 10
+	print(score)
+	
 func popup_closed():
 	# Unpause the game
 	get_tree().paused = false

@@ -1,3 +1,4 @@
+
 class weapon:
 	var owner : Node;
 	var name : String;
@@ -46,6 +47,7 @@ class weapon:
 			mesh.rotation.x = lerp(mesh.rotation.x, 0, 5 * _delta);
 	
 	func _shoot(_delta) -> void:
+		Globals.enemy_killed()
 		# Get audio node
 		var audio = owner.get_node("{}/audio".format([name], "{}"));
 		
