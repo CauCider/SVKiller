@@ -17,7 +17,7 @@ func _damage(damage) -> void:
 		if dam_calc <= 0:
 			durability -= damage;
 			_kill();
-			#Globals.enemy_killed();
+			Globals.enemy_killed();
 			$explosion/timer.start();
 			$timer.start();
 		else:

@@ -1,0 +1,16 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl M_1013_masked_bundle_10233_w_Myriam
+Ka 0.000000 0.000000 0.000000
+Kd 0.490196 0.411765 0.447059
+Ks 0.330000 0.330000 0.330000
+map_Kd maskon/M_1013_masked_bundle_10233_w_Myriam.png
+
+newmtl M_1013_masked_bundle__mask
+Ka 0.000000 0.000000 0.000000
+Kd 0.627451 0.588235 0.623529
+Ks 0.330000 0.330000 0.330000
+map_Kd maskon/M_1013_masked_bundle__mask.png
+
