@@ -16,6 +16,10 @@ var score = 0
 const POPUP_SCENE = preload("res://data/scenes/Pause_Popup.tscn")
 var popup = null
 
+# The gameover scene, and a variable to hold the gameover
+const GAMEOVER_SCENE = preload("res://data/scenes/GameOverScene.tscn")
+var gameover = null
+
 # A canvas layer node so our GUI/UI is always drawn on top
 var canvas_layer = null
 
@@ -121,6 +125,11 @@ func _process(delta):
 func enemy_killed():
 	score += 10
 	print(score)
+	if(score>=50):
+		print("finish")
+		gameover = GAMEOVER_SCENE.instance()
+		add_child(gameover)
+		get_tree().paused = true	
 	
 func popup_closed():
 	# Unpause the game
@@ -178,5 +187,4 @@ func play_sound(sound_name, loop_sound=false, sound_position=null):
 	# If we do not have an audio clip with the name sound_name, print a error message
 	else:
 		print ("ERROR: cannot play sound that does not exist in audio_clips!")
-
 
