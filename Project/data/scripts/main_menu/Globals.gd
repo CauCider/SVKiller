@@ -19,6 +19,7 @@ var popup = null
 # The gameover scene, and a variable to hold the gameover
 const GAMEOVER_SCENE = preload("res://data/scenes/GameOverScene.tscn")
 var gameover = null
+var gameover2 = null
 
 # A canvas layer node so our GUI/UI is always drawn on top
 var canvas_layer = null
@@ -125,7 +126,7 @@ func _process(delta):
 func enemy_killed():
 	score += 10
 	print(score)
-	if(score>=50):
+	if(score>50):
 		print("finish")
 		gameover = GAMEOVER_SCENE.instance()
 		add_child(gameover)
@@ -136,8 +137,8 @@ func good_killed():
 	print(score)
 	if(score<0):
 		print("finish")
-		gameover = GAMEOVER_SCENE.instance()
-		add_child(gameover)
+		gameover2 = GAMEOVER_SCENE.instance()
+		add_child(gameover2)
 		get_tree().paused = true	
 	
 func popup_closed():

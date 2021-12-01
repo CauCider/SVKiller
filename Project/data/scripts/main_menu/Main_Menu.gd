@@ -16,6 +16,7 @@ export (String, FILE) var ruins_level_scene
 
 func _ready():
 	start_menu = $Start_Menu
+	start_menu.visible = true
 	#level_select_menu = $Level_Select_Menu
 	options_menu = $Options_Menu
 	
