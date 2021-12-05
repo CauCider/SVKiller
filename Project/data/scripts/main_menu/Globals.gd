@@ -6,7 +6,9 @@ const MAIN_MENU_PATH = "res://data/scenes/Main_Menu.tscn"
 var player 
 var score = 0
 
-
+#90초 이후에 게임오버시키기 위한 변수들(안전빵 +5)
+var main_timecounter : float = 0.0
+var main_timeLeft : int = 95
 
 
 # ------------------------------------
@@ -99,6 +101,20 @@ func load_new_scene(new_scene_path):
 	
 	# Change scenes
 	get_tree().change_scene(new_scene_path)
+	
+	
+#Timeout_Gameover Code
+func _physics_process(delta:float)->void:#Naive Timer Function
+	main_timecounter += delta
+	if(int(main_timecounter)==1):
+		main_timeLeft -= 1
+		main_timecounter = 0
+		
+	if(main_timeLeft == 0):
+		print("gameover")
+		gameover = GAMEOVER_SCENE.instance()
+		add_child(gameover)
+		get_tree().paused = true
 
 
 func _process(delta):
