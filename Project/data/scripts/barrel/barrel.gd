@@ -6,8 +6,12 @@ export var fall_acceleration = 75
 
 var velocity = Vector3.ZERO
 
+var thrust = Vector2(0, 250)
+var torque = 20000
+
 var linearVelocityModule = 5
 var anglePlayerRot = get_node(".").get("rotation_degrees") # get_rot() not working!
+var posPlayer = get_node(".").get("translation")
 var localLinearVelocityX = linearVelocityModule * cos(anglePlayerRot.x) #Can't convert Vector3 to Float!!
 var localLinearVelocityY = linearVelocityModule * sin(anglePlayerRot.y)
 
@@ -43,6 +47,18 @@ func _damage(damage) -> void:
 			$timer.start();
 		else:
 			durability -= damage;
+			
+#func _integrate_forces(state):
+#    if Input.is_action_pressed("ui_up"):
+#        applied_force = thrust.rotated(rotation)
+#    else:
+#        applied_force = Vector2()
+#   var rotation_dir = 0
+#    if Input.is_action_pressed("ui_right"):
+#        rotation_dir += 1
+#    if Input.is_action_pressed("ui_left"):
+#        rotation_dir -= 1
+#    applied_torque = rotation_dir * torque
 
 func _process(_delta) -> void:
 	_remove_decal();
@@ -55,7 +71,10 @@ func _process(_delta) -> void:
 		pass
 	elif state ==1:
 		motion.x += 5
-		set_linear_velocity(Vector3(-3, 0, 0))
+		set_translation(Vector3(get_node(".").get("translation").x-0.02, get_node(".").get("translation").y, get_node(".").get("translation").z))
+		set_rotation(Vector3(0,0,0))
+		#add_force(Vector3(1,0,0), Vector3(1,0,0))
+		#set_linear_velocity(Vector3(-3, 0, 0))
 		#set_linear_velocity(Vector3(localLinearVelocity.x - speed, get_linear_velocity().y, get_linear_velocity().z))
 	elif state ==2 :
 		motion.y += 5

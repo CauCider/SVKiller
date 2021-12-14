@@ -150,7 +150,7 @@ script = ExtResource( 2 )
 transform = Transform( 0.035, 0, 0, 0, 0.035, 0, 0, 0, 0.035, 0, 0, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="mesh"]
-transform = Transform( 50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -32.7764, 0 )
+transform = Transform( 50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -40.256, 0 )
 mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
@@ -243,6 +243,7 @@ material/87 = null
 material/88 = null
 
 [node name="collision" type="CollisionShape" parent="."]
+transform = Transform( 2, 0, 0, 0, 1.5, 0, 0, 0, 1, 1.10811, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="timer" type="Timer" parent="."]

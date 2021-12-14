@@ -55,7 +55,9 @@ func _process(_delta) -> void:
 		pass
 	elif state ==1:
 		motion.x += 5
-		set_linear_velocity(Vector3(-3, 0, 0))
+		set_rotation(Vector3(0,0,0))
+		set_translation(Vector3(get_node(".").get("translation").x-0.02, get_node(".").get("translation").y, get_node(".").get("translation").z))
+		#set_linear_velocity(Vector3(-4, 0, 0))
 		#set_linear_velocity(Vector3(localLinearVelocity.x - speed, get_linear_velocity().y, get_linear_velocity().z))
 	elif state ==2 :
 		motion.y += 5

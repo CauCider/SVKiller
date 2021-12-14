@@ -142,7 +142,7 @@ func _process(delta):
 func enemy_killed():
 	score += 10
 	print(score)
-	if(score>50):
+	if(score>=50):
 		print("finish")
 		gameover = GAMEOVER_SCENE.instance()
 		add_child(gameover)

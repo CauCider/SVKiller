@@ -85,7 +85,7 @@ directional_shadow_blend_splits = true
 environment = SubResource( 2 )
 
 [node name="character" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 1, 10 )
+transform = Transform( -0.0481348, 0, -0.998841, 0, 1, 0, 0.998841, 0, -0.0481348, -12.6575, 1, 2.7157 )
 
 [node name="debug" parent="." instance=ExtResource( 3 )]
 
@@ -140,11 +140,15 @@ shape = SubResource( 8 )
 transform = Transform( 0.727593, 0, -0.686009, 0, 1, 0, 0.686009, 0, 0.727593, -3.18486, 3.86093, 16.1353 )
 mode = 3
 
+[node name="barrel_2" parent="scenario/props" instance=ExtResource( 5 )]
+transform = Transform( 0.727593, 0, -0.686009, 0, 1, 0, 0.686009, 0, 0.727593, 91.8526, 3.86093, 187.301 )
+mode = 3
+
 [node name="barrel_1" parent="scenario/props" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00388, 3.93336, 8.11722 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24946, 3.38491, 8.11722 )
 
 [node name="nomaskman1" parent="scenario/props" instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.43291, 3.60165, 8.67639 )
+transform = Transform( -0.105882, 0, -0.994379, 0, 1, 0, 0.994379, 0, -0.105882, 43.8972, 3.60165, 20.4799 )
 
 [node name="nomaskman2" parent="scenario/props" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2782, 3.60165, 182.228 )
@@ -155,7 +159,7 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.6291
 [node name="barrel2" parent="scenario/props" instance=ExtResource( 14 )]
 
 [node name="maskperson" parent="scenario/props" instance=ExtResource( 18 )]
-transform = Transform( -0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 25.7365, 4.16061, 40.0237 )
+transform = Transform( -0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 25.7365, 4.34848, 40.0237 )
 script = ExtResource( 19 )
 
 [node name="building_101" parent="." instance=ExtResource( 8 )]
@@ -295,7 +299,7 @@ material/119 = null
 transform = Transform( 5, 0, 0, 0, 4.99886, -0.106806, 0, 0.106806, 4.99886, 109.414, -0.821026, 171.733 )
 
 [node name="Grass" parent="." instance=ExtResource( 11 )]
-transform = Transform( 7, 0, 0, 0, 10, 0, 0, 0, 10, -125.032, 2.5, 27.676 )
+transform = Transform( 7, 0, 0, 0, 10, 0, 0, 0, 10, -125.032, 2.51739, 27.676 )
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -317,10 +321,10 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="Node2D"]
-margin_left = 869.0
-margin_top = -4.0
-margin_right = 1062.0
-margin_bottom = 115.0
+margin_left = 871.0
+margin_top = 28.0
+margin_right = 1064.0
+margin_bottom = 147.0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
