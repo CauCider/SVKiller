@@ -58,6 +58,7 @@ func start_menu_button_pressed(button_name):
 		options_menu.visible = true
 		start_menu.visible = false
 	elif button_name == "quit":
+		
 		get_tree().quit()
 
 

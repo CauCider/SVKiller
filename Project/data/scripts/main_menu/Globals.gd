@@ -20,8 +20,10 @@ var popup = null
 
 # The gameover scene, and a variable to hold the gameover
 const GAMEOVER_SCENE = preload("res://data/scenes/GameOverScene.tscn")
+const GAMEOVER_SCENE2 = preload("res://data/scenes/GameOverScene2.tscn")
 var gameover = null
 var gameover2 = null
+var gameover3 = null
 
 # A canvas layer node so our GUI/UI is always drawn on top
 var canvas_layer = null
@@ -112,8 +114,9 @@ func _physics_process(delta:float)->void:#Naive Timer Function
 		
 	if(main_timeLeft == 0):
 		print("gameover")
-		gameover = GAMEOVER_SCENE.instance()
-		add_child(gameover)
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		gameover3 = GAMEOVER_SCENE2.instance()
+		add_child(gameover3)
 		get_tree().paused = true
 
 
