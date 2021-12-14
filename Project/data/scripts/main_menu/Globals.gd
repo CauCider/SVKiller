@@ -156,7 +156,7 @@ func good_killed():
 	print(score)
 	if(score<0):
 		print("finish")
-		gameover2 = GAMEOVER_SCENE.instance()
+		gameover2 = GAMEOVER_SCENE2.instance()
 		add_child(gameover2)
 		get_tree().paused = true	
 	

@@ -45,7 +45,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 1270.0
-margin_bottom = 710.0
+margin_bottom = 726.0
 custom_constants/margin_right = 40
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40
@@ -55,20 +55,22 @@ custom_constants/margin_bottom = 40
 margin_left = 40.0
 margin_top = 40.0
 margin_right = 1220.0
-margin_bottom = 660.0
+margin_bottom = 676.0
 custom_constants/separation = 200
 
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/Rows"]
 margin_right = 1180.0
-margin_bottom = 88.0
+margin_bottom = 270.0
 custom_fonts/font = SubResource( 2 )
-text = "GAME OVER ; YOU LOSE"
+text = "GAME OVER
+
+YOU LOSE"
 align = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/Rows"]
-margin_top = 288.0
+margin_top = 470.0
 margin_right = 1180.0
-margin_bottom = 454.0
+margin_bottom = 636.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
